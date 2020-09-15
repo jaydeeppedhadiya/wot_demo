@@ -1,0 +1,16 @@
+{
+  "name": "wot_electron",
+  "version": "1.0.0",
+  "description": "demo electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jaydeepwot@bitbucket.org/jaydeepwot/wot_electron.git"
+  },
+  "author": "jd",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jaydeepwot/wot_electron#readme"
+}
