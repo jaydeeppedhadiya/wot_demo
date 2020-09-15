@@ -52,27 +52,20 @@ autoUpdater.on('update-available', () => {
     mainWindow.webContents.send('update_available');
 });
 
-autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update_downloaded');
-});
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Restart', 'Later'],
+        title: 'Application Update',
+        message: process.platform === 'win32' ? releaseNotes : releaseName,
+        detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+    }
 
-ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
-});
-// autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-//     const dialogOpts = {
-//         type: 'info',
-//         buttons: ['Restart', 'Later'],
-//         title: 'Application Update',
-//         message: process.platform === 'win32' ? releaseNotes : releaseName,
-//         detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-//     }
-
-//     dialog.showMessageBox(dialogOpts).then((returnValue) => {
-//         if (returnValue.response === 0) autoUpdater.quitAndInstall()
-//     })
-// })
-// autoUpdater.on('error', message => {
-//     console.error('There was a problem updating the application')
-//     console.error(message)
-// })
+    dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.quitAndInstall()
+    })
+})
+autoUpdater.on('error', message => {
+    console.error('There was a problem updating the application')
+    console.error(message)
+})

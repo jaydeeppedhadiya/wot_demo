@@ -8,17 +8,15 @@
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps",
-    "build": "electron-builder build  --win --publish never",
-    "deploy": "electron-builder build  --win --publish always"
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaydeeppedhadiya/wot_demo.git"
+    "url": "git+https://jaydeepwot@bitbucket.org/jaydeepwot/wot_electron.git"
   },
   "author": "jd",
   "license": "ISC",
-  "homepage": "https://github.com/jaydeeppedhadiya/wot_demo#readme",
+  "homepage": "https://bitbucket.org/jaydeepwot/wot_electron#readme",
   "devDependencies": {
     "electron": "^10.1.2"
   },
@@ -31,9 +29,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "jaydeeppedhadiya",
-        "repo": "wot_demo",
-        "token":"528554a0f1c4057ce71697da98c578132419058d "
+        "owner": "edelCustodio",
+        "repo": "electron-auto-update"
       }
     ]
   }
